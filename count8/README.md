@@ -15,7 +15,8 @@ https://youtu.be/u4VS_V55O1k?si=ejc8wfo60M9KBRcq
 
 ![스크린샷 2025-04-05 오전 1 10 18](https://github.com/user-attachments/assets/32197e17-f0c5-4434-b788-b4faefef984d)
 
-![IMG_5174](https://github.com/user-attachments/assets/ffa83341-8068-494b-8eb6-f9d357bd8c89)
+![Uploading IMG_5177.jpeg…]()
+
 
 - 라즈베리파이 5
 - gpio 커넥터
