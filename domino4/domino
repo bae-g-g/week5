@@ -1,9 +1,8 @@
 #!/usr/bin/bash #/usr/bin/bash로 아래를 해석합니다.
 
 pin_arr=(20 21 23 24) #각 gpio 핀번호 배열에 저장 
-pin_count=3 #불이 켜질 순서를 저장하는 변수, 1을 증가시키고 4모듈러연산을 위해 3에서 시작
 
-for i in ${pin_arr[@]}; #pin_arr의 요소 전체를 i에 하나씩 할당하면서 반복
+for i in ${pin_arr[@]}; # 각 pin_arr요소를  순서대로 i할당하며 반복
 do
  	pinctrl set $i op; # 각 핀 아웃풋으로 설정
  	pinctrl set $i dl; # 각 핀 LOW로 설정
@@ -11,9 +10,10 @@ done
 
 while true;  #계속해서 반복 
 do
-	pinctrl set ${pin_arr[$(( ($pin_count+1)%4)) ]} dh; # (현재에 해당하는 순서 + 1 )%4에 불을 킴
-	pinctrl set ${pin_arr[$((   $pin_count%4 ))  ]} dl; # (현재에 해당하는 순서)%4에 불을 끔
-
-	pin_count=$(( ($pin_count+1)%4 )); #다음 led를 키기위해 1을 증가시키고, 4개 led 순환을 위해 4모듈러 연산
-    sleep 1; #1초 대기
+	for i in ${pin_arr[@]}; # 각 pin_arr요소를  순서대로 i할당하며 반복
+	do
+ 		pinctrl set $i dh; # 해당 핀을 high로 설정
+ 		sleep 1 # 1초 대기
+		pinctrl set $i dl; # 해당 핀 LOW로 설정
+	done
 done
