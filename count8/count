@@ -1,24 +1,24 @@
 #!/usr/bin/bash
-pin_arr=(24 23 21)
-pin_count=0;
+pin_arr=(24 23 21) #각 gpio 핀번호 배열에 저장 
+pin_count=0; # 0~7까지를 나타낼 변수
 
-for i in ${pin_arr[@]};
+for i in ${pin_arr[@]}; # 각 핀 셋팅
 do
-	pinctrl set $i op
-	pinctrl set $i dl;
+	pinctrl set $i op  # 각 핀 아웃풋으로 설정
+	pinctrl set $i dl; # 각 핀 LOW로 설정
 done
 
-while true;
+while true; #계속해서 반복 
 do
-	for i in {0..2};
+	for i in {0..2}; # 3자리 2진수를 나타냄으로 자리수만큼 반복
 	do
-		temp=$(( 1<<$i ));
-		if [ $(( $pin_count&$temp )) -eq $temp ]; then
-			pinctrl set ${pin_arr[$i]} dh
-		else
-			pinctrl set ${pin_arr[$i]} dl
+		temp=$(( 1<<$i )); #  앤드연산을 위한 변수 선언, 각 0번쨰(1),1번째(2),2번째(4)를 나타냄  
+		if [ $(( $pin_count&$temp )) -eq $temp ]; then  #각 비트의 자리가 1인 경우
+			pinctrl set ${pin_arr[$i]} dh # 해당 자리의 불을 킴
+		else # 해당자리가 0인경우
+			pinctrl set ${pin_arr[$i]} dl #해당자리의 불음 끔
 		fi
 	done
-	pin_count=$(( ($pin_count+1)%8 ));
-	sleep 1
+	pin_count=$(( ($pin_count+1)%8 )); #0~7까지 반복함으로 1을 증가시키고 8모듈러연산
+	sleep 1 #1초 대기
 done
