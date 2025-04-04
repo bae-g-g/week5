@@ -13,8 +13,10 @@ while true; #계속해서 반복
 do
 	for i in {0..2}; # 3자리 2진수를 나타냄으로 자리수만큼 반복
 	do
-		temp=$(( 1<<$i )); #  앤드연산을 위한 변수 선언, 각 반복에서 0번쨰(001),1번째(010),2번째(100)를 나타냄  
-		if [ $(( $pin_count&$temp )) -eq $temp ]; then  # &연산을 통해서 pin_count와 temp의 비트자리가 둘 다 1인경우 불을 키고 아닌경우 불을 끄도록함
+		temp=$(( 1<<$i )); #  앤드연산을 위한 변수 선언, 각 반복에서 0번쨰(001),1번째(010),2번째(100)를 나타냄
+
+		# &연산을 통해서 pin_count와 temp의 비트자리가 둘 다 1인경우 불을 키고 아닌경우 불을 끄도록함
+		if [ $(( $pin_count&$temp )) -eq $temp ]; then  #해당자리가 1인경우
 			pinctrl set ${pin_arr[$i]} dh # 해당 자리의 불을 킴
 		else # 해당자리가 0인경우
 			pinctrl set ${pin_arr[$i]} dl #해당자리의 불음 끔
