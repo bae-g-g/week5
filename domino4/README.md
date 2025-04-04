@@ -1,5 +1,7 @@
 # 유튜브 링크
-https://youtu.be/WT8MrBUovzw?si=1rmzH-xlnGFoSt8j
+
+https://youtu.be/vkLGjLLOLr4?si=AsOU9nAD2Fyg5HlI
+
 # 과제
 <img width="502" alt="image" src="https://github.com/user-attachments/assets/7aa69fa9-8b76-4139-8b74-9a0b0965c974" />
 
