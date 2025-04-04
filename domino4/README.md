@@ -1,5 +1,5 @@
 # 유튜브 링크
-
+https://youtu.be/WT8MrBUovzw?si=1rmzH-xlnGFoSt8j
 # 과제
 <img width="502" alt="image" src="https://github.com/user-attachments/assets/7aa69fa9-8b76-4139-8b74-9a0b0965c974" />
 
@@ -13,5 +13,6 @@
 - gpio 커넥터
 - 브래드보드
 - 미니 브래드보드
+- led 4개
 - 330옴 저항 4개
 - 점퍼선 5개
