@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+pin_arr=(24 23 21)
+pin_count=0;
+
+for i in ${pin_arr[@]};
+do
+	pinctrl set $i op
+	pinctrl set $i dl;
+done
+
+while true;
+do
+	for i in {0..2};
+	do
+		temp=$(( 1<<$i ));
+		if [ $(( $pin_count&$temp )) -eq $temp ]; then
+			pinctrl set ${pin_arr[$i]} dh
+		else
+			pinctrl set ${pin_arr[$i]} dl
+		fi
+	done
+	pin_count=$(( ($pin_count+1)%8 ));
+	sleep 1
+done
